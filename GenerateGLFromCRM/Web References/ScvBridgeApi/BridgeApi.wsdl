@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.bicinfor.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.bicinfor.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.bicinfor.com/">
+      <s:element name="Test">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListCars">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListCarsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListCarsResult" type="tns:ArrayOfOCar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOCar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OCar" nillable="true" type="tns:OCar" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OCar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ObjectID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LicensePlate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUserID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListCities">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListCitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListCitiesResult" type="tns:ArrayOfOCity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOCity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OCity" nillable="true" type="tns:OCity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OCity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ObjectID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fullname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUserID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListCostCategories">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListCostCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListCostCategoriesResult" type="tns:ArrayOfOCostCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOCostCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OCostCategory" nillable="true" type="tns:OCostCategory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OCostCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ObjectID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUserID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListUsers">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListUsersResult" type="tns:ArrayOfOUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OUser" nillable="true" type="tns:OUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ObjectID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Role" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticketObjectID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTicketResult" type="tns:OTicket" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OTicket">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ObjectID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Driver1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Driver2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FromPlace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Car1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Car2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GoodsPlace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Route" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdminRemark" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartFuelFillingTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndFuelFillingTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FromTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateAt" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialDay" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SerialNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreviewCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrintCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoadCosts" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Customers" type="tns:ArrayOfOCustomer" />
+          <s:element minOccurs="0" maxOccurs="1" name="NetWeight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OilAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProduceRemark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReplacementAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReplacementTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoughWeight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TareWeight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DriverRemark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmptyPoundAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormMilage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOCustomer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OCustomer" nillable="true" type="tns:OCustomer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OCustomer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ObjectID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceiptAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToMilage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadTicketInXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticketObjectID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadTicketInXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTicketInXmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WriteTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="tns:OTicket" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WriteTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WriteTicketResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WriteTicketInXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticketInXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WriteTicketInXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WriteTicketInXmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="tns:OTicket" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateTicketResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticketObjectID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteTicketResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListTicketFees">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fromPlace" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListTicketFeesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListTicketFeesResult" type="tns:ArrayOfOTicketFees" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOTicketFees">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OTicketFees" nillable="true" type="tns:OTicketFees" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OTicketFees">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ErpTicketID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TicketObjectID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Driver1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Driver2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Car1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Car2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateAt" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoadCosts" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FeeItems" type="tns:ArrayOfOFeeItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOFeeItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OFeeItem" nillable="true" type="tns:OFeeItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OFeeItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListTicketFeesInXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fromPlace" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListTicketFeesInXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListTicketFeesInXmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnfilledTicketsInXml">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUnfilledTicketsInXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnfilledTicketsInXmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnsubmitedTicketsInXml">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUnsubmitedTicketsInXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnsubmitedTicketsInXmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetFeeExtracted">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="erpTicketID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetFeeExtractedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetFeeExtractedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetFillProcessed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="erpTicketID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetFillProcessedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetFillProcessedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSubmitProcessed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="erpTicketID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSubmitProcessedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetSubmitProcessedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TestSoapIn">
+    <wsdl:part name="parameters" element="tns:Test" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapOut">
+    <wsdl:part name="parameters" element="tns:TestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListCarsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListCars" />
+  </wsdl:message>
+  <wsdl:message name="ListCarsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListCitiesSoapIn">
+    <wsdl:part name="parameters" element="tns:ListCities" />
+  </wsdl:message>
+  <wsdl:message name="ListCitiesSoapOut">
+    <wsdl:part name="parameters" element="tns:ListCitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListCostCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:ListCostCategories" />
+  </wsdl:message>
+  <wsdl:message name="ListCostCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:ListCostCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:ListUsers" />
+  </wsdl:message>
+  <wsdl:message name="ListUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:ListUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTicket" />
+  </wsdl:message>
+  <wsdl:message name="ReadTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTicketInXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTicketInXml" />
+  </wsdl:message>
+  <wsdl:message name="ReadTicketInXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTicketInXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="WriteTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:WriteTicket" />
+  </wsdl:message>
+  <wsdl:message name="WriteTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:WriteTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="WriteTicketInXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:WriteTicketInXml" />
+  </wsdl:message>
+  <wsdl:message name="WriteTicketInXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:WriteTicketInXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTicket" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteTicket" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListTicketFeesSoapIn">
+    <wsdl:part name="parameters" element="tns:ListTicketFees" />
+  </wsdl:message>
+  <wsdl:message name="ListTicketFeesSoapOut">
+    <wsdl:part name="parameters" element="tns:ListTicketFeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListTicketFeesInXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:ListTicketFeesInXml" />
+  </wsdl:message>
+  <wsdl:message name="ListTicketFeesInXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:ListTicketFeesInXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnfilledTicketsInXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnfilledTicketsInXml" />
+  </wsdl:message>
+  <wsdl:message name="GetUnfilledTicketsInXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnfilledTicketsInXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnsubmitedTicketsInXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnsubmitedTicketsInXml" />
+  </wsdl:message>
+  <wsdl:message name="GetUnsubmitedTicketsInXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnsubmitedTicketsInXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetFeeExtractedSoapIn">
+    <wsdl:part name="parameters" element="tns:SetFeeExtracted" />
+  </wsdl:message>
+  <wsdl:message name="SetFeeExtractedSoapOut">
+    <wsdl:part name="parameters" element="tns:SetFeeExtractedResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetFillProcessedSoapIn">
+    <wsdl:part name="parameters" element="tns:SetFillProcessed" />
+  </wsdl:message>
+  <wsdl:message name="SetFillProcessedSoapOut">
+    <wsdl:part name="parameters" element="tns:SetFillProcessedResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetSubmitProcessedSoapIn">
+    <wsdl:part name="parameters" element="tns:SetSubmitProcessed" />
+  </wsdl:message>
+  <wsdl:message name="SetSubmitProcessedSoapOut">
+    <wsdl:part name="parameters" element="tns:SetSubmitProcessedResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BridgeAPISoap">
+    <wsdl:operation name="Test">
+      <wsdl:input message="tns:TestSoapIn" />
+      <wsdl:output message="tns:TestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListCars">
+      <wsdl:input message="tns:ListCarsSoapIn" />
+      <wsdl:output message="tns:ListCarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListCities">
+      <wsdl:input message="tns:ListCitiesSoapIn" />
+      <wsdl:output message="tns:ListCitiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListCostCategories">
+      <wsdl:input message="tns:ListCostCategoriesSoapIn" />
+      <wsdl:output message="tns:ListCostCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListUsers">
+      <wsdl:input message="tns:ListUsersSoapIn" />
+      <wsdl:output message="tns:ListUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTicket">
+      <wsdl:input message="tns:ReadTicketSoapIn" />
+      <wsdl:output message="tns:ReadTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTicketInXml">
+      <wsdl:input message="tns:ReadTicketInXmlSoapIn" />
+      <wsdl:output message="tns:ReadTicketInXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WriteTicket">
+      <wsdl:input message="tns:WriteTicketSoapIn" />
+      <wsdl:output message="tns:WriteTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WriteTicketInXml">
+      <wsdl:input message="tns:WriteTicketInXmlSoapIn" />
+      <wsdl:output message="tns:WriteTicketInXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTicket">
+      <wsdl:input message="tns:UpdateTicketSoapIn" />
+      <wsdl:output message="tns:UpdateTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTicket">
+      <wsdl:input message="tns:DeleteTicketSoapIn" />
+      <wsdl:output message="tns:DeleteTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListTicketFees">
+      <wsdl:input message="tns:ListTicketFeesSoapIn" />
+      <wsdl:output message="tns:ListTicketFeesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListTicketFeesInXml">
+      <wsdl:input message="tns:ListTicketFeesInXmlSoapIn" />
+      <wsdl:output message="tns:ListTicketFeesInXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnfilledTicketsInXml">
+      <wsdl:input message="tns:GetUnfilledTicketsInXmlSoapIn" />
+      <wsdl:output message="tns:GetUnfilledTicketsInXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsubmitedTicketsInXml">
+      <wsdl:input message="tns:GetUnsubmitedTicketsInXmlSoapIn" />
+      <wsdl:output message="tns:GetUnsubmitedTicketsInXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetFeeExtracted">
+      <wsdl:input message="tns:SetFeeExtractedSoapIn" />
+      <wsdl:output message="tns:SetFeeExtractedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetFillProcessed">
+      <wsdl:input message="tns:SetFillProcessedSoapIn" />
+      <wsdl:output message="tns:SetFillProcessedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSubmitProcessed">
+      <wsdl:input message="tns:SetSubmitProcessedSoapIn" />
+      <wsdl:output message="tns:SetSubmitProcessedSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BridgeAPISoap" type="tns:BridgeAPISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Test">
+      <soap:operation soapAction="http://www.bicinfor.com/Test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCars">
+      <soap:operation soapAction="http://www.bicinfor.com/ListCars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCities">
+      <soap:operation soapAction="http://www.bicinfor.com/ListCities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCostCategories">
+      <soap:operation soapAction="http://www.bicinfor.com/ListCostCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListUsers">
+      <soap:operation soapAction="http://www.bicinfor.com/ListUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTicket">
+      <soap:operation soapAction="http://www.bicinfor.com/ReadTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTicketInXml">
+      <soap:operation soapAction="http://www.bicinfor.com/ReadTicketInXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WriteTicket">
+      <soap:operation soapAction="http://www.bicinfor.com/WriteTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WriteTicketInXml">
+      <soap:operation soapAction="http://www.bicinfor.com/WriteTicketInXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTicket">
+      <soap:operation soapAction="http://www.bicinfor.com/UpdateTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTicket">
+      <soap:operation soapAction="http://www.bicinfor.com/DeleteTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListTicketFees">
+      <soap:operation soapAction="http://www.bicinfor.com/ListTicketFees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListTicketFeesInXml">
+      <soap:operation soapAction="http://www.bicinfor.com/ListTicketFeesInXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnfilledTicketsInXml">
+      <soap:operation soapAction="http://www.bicinfor.com/GetUnfilledTicketsInXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsubmitedTicketsInXml">
+      <soap:operation soapAction="http://www.bicinfor.com/GetUnsubmitedTicketsInXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetFeeExtracted">
+      <soap:operation soapAction="http://www.bicinfor.com/SetFeeExtracted" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetFillProcessed">
+      <soap:operation soapAction="http://www.bicinfor.com/SetFillProcessed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSubmitProcessed">
+      <soap:operation soapAction="http://www.bicinfor.com/SetSubmitProcessed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BridgeAPISoap12" type="tns:BridgeAPISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Test">
+      <soap12:operation soapAction="http://www.bicinfor.com/Test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCars">
+      <soap12:operation soapAction="http://www.bicinfor.com/ListCars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCities">
+      <soap12:operation soapAction="http://www.bicinfor.com/ListCities" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListCostCategories">
+      <soap12:operation soapAction="http://www.bicinfor.com/ListCostCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListUsers">
+      <soap12:operation soapAction="http://www.bicinfor.com/ListUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTicket">
+      <soap12:operation soapAction="http://www.bicinfor.com/ReadTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTicketInXml">
+      <soap12:operation soapAction="http://www.bicinfor.com/ReadTicketInXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WriteTicket">
+      <soap12:operation soapAction="http://www.bicinfor.com/WriteTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WriteTicketInXml">
+      <soap12:operation soapAction="http://www.bicinfor.com/WriteTicketInXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTicket">
+      <soap12:operation soapAction="http://www.bicinfor.com/UpdateTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTicket">
+      <soap12:operation soapAction="http://www.bicinfor.com/DeleteTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListTicketFees">
+      <soap12:operation soapAction="http://www.bicinfor.com/ListTicketFees" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListTicketFeesInXml">
+      <soap12:operation soapAction="http://www.bicinfor.com/ListTicketFeesInXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnfilledTicketsInXml">
+      <soap12:operation soapAction="http://www.bicinfor.com/GetUnfilledTicketsInXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsubmitedTicketsInXml">
+      <soap12:operation soapAction="http://www.bicinfor.com/GetUnsubmitedTicketsInXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetFeeExtracted">
+      <soap12:operation soapAction="http://www.bicinfor.com/SetFeeExtracted" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetFillProcessed">
+      <soap12:operation soapAction="http://www.bicinfor.com/SetFillProcessed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSubmitProcessed">
+      <soap12:operation soapAction="http://www.bicinfor.com/SetSubmitProcessed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BridgeAPI">
+    <wsdl:port name="BridgeAPISoap" binding="tns:BridgeAPISoap">
+      <soap:address location="http://192.168.1.12:9016/Service/BridgeApi.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BridgeAPISoap12" binding="tns:BridgeAPISoap12">
+      <soap12:address location="http://192.168.1.12:9016/Service/BridgeApi.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
